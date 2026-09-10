@@ -137,6 +137,28 @@ check:
     for f in examples/*.scad; do
       run mesh ex "$(basename "$f" .scad)" "$f" '$fn={{check_facets}}'
     done
+
+    # `just geom` is not in CI, and rightly so: a zero-tolerance mesh compare
+    # only holds for one OpenSCAD build. The side effect is that a stale
+    # baseline says nothing at all -- 8c8cf87 changed the panel plate and left
+    # the baseline describing the old geometry for ten days before anyone ran
+    # `just geom`. Comparing commit dates costs nothing and closes that gap.
+    #
+    # A warning, never a failure: plenty of cad/ edits are comments or
+    # formatting and move no geometry, so this cannot judge whether the
+    # baseline is actually wrong -- only that it has not been looked at since.
+    # Skipped silently without git history, which includes a shallow CI clone.
+    if git rev-parse --git-dir >/dev/null 2>&1; then
+      cad_at=$(git log -1 --format=%ct -- cad/ 2>/dev/null || true)
+      base_at=$(git log -1 --format=%ct -- tests/geometry-baseline.json 2>/dev/null || true)
+      if [ -n "$cad_at" ] && [ -n "$base_at" ] && [ "$cad_at" -gt "$base_at" ]; then
+        echo
+        echo "  note   cad/ has changed since the geometry baseline was written"
+        echo "         ($(git log -1 --format=%cs -- cad/) vs $(git log -1 --format=%cs -- tests/geometry-baseline.json))."
+        echo "         Run 'just geom'. If the change was intended, 'just geom-baseline'."
+      fi
+    fi
+
     exit $fail
 
 # Render every part at every size to build/ as STL.
