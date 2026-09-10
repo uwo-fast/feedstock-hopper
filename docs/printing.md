@@ -30,8 +30,9 @@ Roughly 210 g of feedstock and a couple of hours on the bed.
 It is the real angle, throat, wall and corner radii, so it presents the surface
 the hopper will. Fill it and watch whether it empties completely and whether
 material moves across the whole wall rather than draining a channel down the
-middle. That question is worth answering before committing two twenty-hour
-prints. See [`loads.md`](loads.md) and [`design-notes.md`](design-notes.md) for
+middle. That was worth answering before committing two twenty-hour prints; now
+that the hopper is built, the coupon is the cheap way to re-test a wall angle or
+a material without reprinting a segment. See [`loads.md`](loads.md) and [`design-notes.md`](design-notes.md) for
 why the wall angle is the assumption most worth testing.
 
 ## Parts
