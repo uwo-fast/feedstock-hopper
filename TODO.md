@@ -7,7 +7,10 @@ done, not when it is ticked.
 
 ## On the bench
 
-Nothing here can be settled at the keyboard.
+Nothing here can be settled at the keyboard. The hopper is now built and
+running, so most of these are no longer waiting on a print — they are waiting on
+someone measuring the machine that exists and writing the answer down. Tick off
+whatever the build already settled.
 
 - [ ] **Run the flow coupon.** `just coupon` exports it, `just coupon 60` the
       shallower one to compare against. Print it in the hopper's own material and

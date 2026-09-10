@@ -24,18 +24,19 @@ for the extruder that GreenBoy3D does not supply.
 Firmware lives separately, in
 [`uwo-fast/Prusa-Firmware-GB3DPE`](https://github.com/uwo-fast/Prusa-Firmware-GB3DPE).
 
-**Status: designed, not yet printed.** The hopper CAD started as an imported
-draft and has been through a full review — see
-[the review](docs/hopper-design-review.md) for what the draft got wrong and
-what has since been fixed. Every part compiles and holds its asserts under
-`just check`, and the geometry is regression-tested against a committed
+**Status: printed and in service.** The hopper is built and feeding the
+extruder. The CAD started as an imported draft and has been through a full
+review — see [the review](docs/hopper-design-review.md) for what the draft got
+wrong and what has since been fixed. Every part compiles and holds its asserts
+under `just check`, and the geometry is regression-tested against a committed
 baseline.
 
-What has not happened is a print. The funnel's wall angle, the hose thread's
-fit and the mount under load are all design targets rather than measurements,
-so treat the numbers as provisional. The **test coupons are meant to be
-printed** — `just coupon` and `just hose-coupon` exist precisely to turn three
-of those targets into measurements. [`TODO.md`](TODO.md) lists what needs the
+What the build has not yet produced is a record. The funnel's wall angle, the
+hose thread's fit and the mount under load were design targets, and the printed
+hopper is the evidence that would settle them — but the measurements have not
+been taken and the as-built deviations from the committed CAD are not written
+down. Treat the numbers here as targets the machine appears to satisfy rather
+than figures anyone has checked. [`TODO.md`](TODO.md) lists what still needs the
 bench.
 
 ## Repository layout
