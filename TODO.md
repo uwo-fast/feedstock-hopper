@@ -12,15 +12,6 @@ running, so most of these are no longer waiting on a print — they are waiting 
 someone measuring the machine that exists and writing the answer down. Tick off
 whatever the build already settled.
 
-- [ ] **Run the flow coupon.** `just coupon` exports it, `just coupon 60` the
-      shallower one to compare against. Print it in the hopper's own material and
-      layer height — the layer lines are the wall texture being tested — then
-      fill it and watch three things: whether it starts without a tap, whether it
-      empties completely, and whether the whole surface moves or it drains a
-      channel down the middle and leaves the rest standing. That last one is
-      ratholing, and it is the failure that matters. Two hours on the bed against
-      two twenty-hour segments.
-
 - [ ] **Measure the wall friction angle of a printed surface** against both
       feedstocks. The 60°/70° minimums in `hopper_specs.scad` are design targets
       from general practice, not measurements, and the critical mass-flow angle
@@ -93,7 +84,7 @@ whatever the build already settled.
 
 - [ ] **Consider a bridge-breaker or vibrator boss, a sight window, and level
       sensing.** None are needed to print; all are cheap to add while the body is
-      still being revised. The flow coupon result should decide the first one.
+      still being revised. How the hopper flows in service should decide the first one.
 
 ## Watch items
 

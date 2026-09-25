@@ -190,8 +190,7 @@ hose_type = 0; // [0:GB3D 1 m conveyor]
 
 // Confirmed right-handed on a coupon. The socket is threaded to match the
 // hose's reinforcing rib, so this has to match the real hose or it simply will
-// not screw in. Settle any new hose on `just hose-coupon`, not by reprinting
-// outlets.
+// not screw in. A new hose needs its handedness and fits found by trial.
 hose_handedness = "right"; // [right,left]
 
 // Two fits on the hose, and neither is calculable: it is a moulded part with no

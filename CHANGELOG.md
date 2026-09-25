@@ -130,6 +130,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   only ever exit on the skirt's 45 degree cone, where no head seats. The
   outlet's retention now rests on the bayonet and on the hose thread, which
   `cad/coupons/hose_thread_coupon.scad` exists to settle.
+- The flow and hose-thread coupons (`cad/coupons/`), their `just coupon`,
+  `coupon-stand` and `hose-coupon` recipes, and their gate and baseline entries.
+  The hopper is built and in service, and each coupon had already settled what
+  it was printed for.
 
 ### Notes
 

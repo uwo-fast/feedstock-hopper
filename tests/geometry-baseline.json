@@ -97,48 +97,6 @@
     "triangles": 540,
     "volume_mm3": 169920.816
   },
-  "coupon-60deg": {
-    "bbox_mm": [
-      150.0,
-      150.0,
-      86.5
-    ],
-    "origin_mm": [
-      -75.0,
-      -75.0,
-      -0.5
-    ],
-    "triangles": 1216,
-    "volume_mm3": 143729.816
-  },
-  "coupon-70deg": {
-    "bbox_mm": [
-      150.0,
-      150.0,
-      86.5
-    ],
-    "origin_mm": [
-      -75.0,
-      -75.0,
-      -0.5
-    ],
-    "triangles": 1216,
-    "volume_mm3": 155704.356
-  },
-  "coupon-stand": {
-    "bbox_mm": [
-      177.0,
-      177.0,
-      90.0
-    ],
-    "origin_mm": [
-      -88.5,
-      -88.5,
-      0.0
-    ],
-    "triangles": 2176,
-    "volume_mm3": 243788.659
-  },
   "hub": {
     "bbox_mm": [
       95.0,

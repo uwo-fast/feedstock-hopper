@@ -1,39 +1,7 @@
 # Printing and assembly
 
 The shipping configuration: 202 × 202, two segments, regrind at 70°, mounted on
-the MK3S frame. `just render` writes every part; `just coupon` writes the flow
-test piece.
-
-## Print the coupon first
-
-`just coupon` for the funnel and `just coupon-stand` for the stand it sits in.
-They print separately: the funnel then has nothing hanging off it, and one stand
-is reusable across every angle you want to compare (`just coupon 60` for the
-shallower one).
-
-**Print both inverted** — flange down for the funnel, ring down for the stand.
-Everything slopes inward that way and nothing overhangs, and each part lands its
-widest face on the bed.
-
-The stand's legs splay outward toward their feet, so it has no bottom ring:
-in this orientation the carrying ring is the one on the bed, so a second ring at
-the far end does nothing for adhesion, and four splayed legs on a 170 mm ring
-already tip at about 34° under a coupon weighing well under a kilogram. Its
-legs are solid blocks rather than shells, so infill does most of the work —
-roughly 90 g rather than the 310 g its solid volume suggests.
-
-**Print them on the machine and in the material that will print the hopper**, at
-the same layer height. The surface finish is the experiment: a coupon printed
-some other way answers a question nobody asked.
-
-Roughly 210 g of feedstock and a couple of hours on the bed.
-It is the real angle, throat, wall and corner radii, so it presents the surface
-the hopper will. Fill it and watch whether it empties completely and whether
-material moves across the whole wall rather than draining a channel down the
-middle. That was worth answering before committing two twenty-hour prints; now
-that the hopper is built, the coupon is the cheap way to re-test a wall angle or
-a material without reprinting a segment. See [`loads.md`](loads.md) and [`design-notes.md`](design-notes.md) for
-why the wall angle is the assumption most worth testing.
+the MK3S frame. `just render` writes every part.
 
 ## Parts
 
@@ -70,8 +38,8 @@ Measured, not guessed: downward-facing flat area above the bed, per part.
 
 ## Settings
 
-Print in the material and layer height you intend to keep — for the coupon that
-is the point, since layer lines are the wall texture being tested.
+Print in the material and layer height you intend to keep: the layer lines are
+the wall texture the funnel angle depends on.
 
 Perimeters matter more than infill here. Everything structural in
 [`loads.md`](loads.md) is bending in a thin wall, so shell thickness is what
@@ -110,8 +78,8 @@ the alignment, so the tape is not being asked to hold anything in place.
    through the drilled panel. Panel hole is **Ø65**.
 3. Twist the **outlet** up into the hub's lower socket.
 4. Screw the **hose** into the outlet — it threads, the reinforcing rib is the
-   thread. Right-handed, 0.2 mm clearance, both settled on a coupon. Settle any
-   different hose the same way, on `just hose-coupon`, not by reprinting outlets.
+   thread. Right-handed, 0.2 mm clearance, both settled on a coupon. A different
+   hose needs its fits found by trial.
 5. Bolt the two **body segments** together, dowels first.
 6. Turn the body back by the sweep angle, drop it into the hub, and turn it
    forward to seat.

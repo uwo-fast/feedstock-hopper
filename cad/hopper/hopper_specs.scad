@@ -143,8 +143,7 @@ function feedstock(index) =
 // 20 mm bore, 21.5 mm over the tube wall, and a semicircular rib of 3.5 mm
 // diameter wound at 8.5 mm pitch, giving 25 mm overall. Right-handed, and the
 // tube and pitch figures are the corrected ones -- all three settled on a
-// coupon that screws in, not off a first caliper reading. See
-// cad/coupons/hose_thread_coupon.scad.
+// coupon that screws in, not off a first caliper reading.
 HOSE_GB3D = ["GB3D 1 m conveyor", 20, 21.5, 3.5, 8.5, "right"];
 
 hose_registry = [HOSE_GB3D];

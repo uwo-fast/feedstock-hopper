@@ -33,8 +33,8 @@ under-predict both capacity and wall load.
 The **60°/70° wall angles** remain design targets from general bulk-solids
 practice, not measurements. The critical mass-flow angle depends on the wall
 friction of the surface material slides on, and a printed wall is nothing like
-the steel those figures assume. The flow coupon exists to answer that — see
-[`printing.md`](printing.md).
+the steel those figures assume. Measuring it against a printed surface is
+tracked in [`TODO.md`](../TODO.md).
 
 **Virgin pellet density** is still the general-practice 0.62 kg/L. Worth
 measuring the same way if virgin ever becomes the main feedstock.

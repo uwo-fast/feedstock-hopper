@@ -82,8 +82,8 @@ cleanly from under the plate through the hub's fixings. The outlet's bore
 widens monotonically from the hose end up to the coupling, so in the flow
 direction it converges with no ledge.
 
-The hose-into-socket fit was settled on a printed coupon rather than in CGAL,
-which is what `cad/coupons/hose_thread_coupon.scad` is for. It had to be: the
+The hose-into-socket fit was settled on a printed coupon rather than in CGAL
+(the coupon has since been removed; it is in the history). It had to be: the
 check that CGAL passed had been run against a thread cutting a tenth of its
 groove, so it was measuring a hose through what was nearly a plain bore.
 
@@ -97,7 +97,7 @@ polyhedron, so it starts and ends on a flat cap, and a cap landing inside the
 part leaves solid material exactly where the groove should be. The socket swept
 from 0.5 mm below its mouth, which blocked 57 degrees of the entry -- the rib
 meeting a wall instead of a groove, which is a hose that will not start. The
-sweep now runs a full lead past the socket at both ends, as the coupon does.
+sweep now runs a full lead past the socket at both ends, as the coupon did.
 
 ## C — mount
 

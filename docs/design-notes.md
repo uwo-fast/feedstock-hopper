@@ -162,8 +162,8 @@ the skirt in to 88 mm would clear it, at the cost of moving the hub fixings
 3.5 mm nearer the clearance hole.
 
 So the outlet's retention rests on the bayonet, and on the hose thread that
-screws into it. Whether that is enough is what `cad/coupons/hose_thread_coupon.scad`
-is for; until it is answered, strain-relieving the hose near the outlet is the
+screws into it. Whether that is enough is for the printed outlet on the real hose
+to show (see `TODO.md`); until it is answered, strain-relieving the hose near the outlet is the
 cheap insurance, because it removes the torque instead of resisting it.
 
 ## The toolhead's own feed bore caps the system at ~4.6 mm
