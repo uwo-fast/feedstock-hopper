@@ -32,12 +32,34 @@ FLOW_RATIO_CONVERGING_FLAKE = 10; //! Irregular flake, which interlocks
 FLOW_RATIO_PARALLEL_PELLET = 3; //! Round, free-flowing pellets
 FLOW_RATIO_PARALLEL_FLAKE = 4; //! Irregular flake
 
-// The GreenBoy3D toolhead's own feed bore, where material drops onto the screw.
-// Measured off the vendor STEP files: 18.30 mm, centred on the extruder axis,
-// appearing identically in both sliding-pit parts. It is metal and it is the one
-// opening in the whole path we cannot size, so it caps the system regardless of
-// how generous everything upstream is.
-GB3DPE_FEED_BORE = 18.30;
+// ===== Feed target =====
+
+// The machine the hopper feeds ends the flow path with an opening of its own.
+// It is metal and not ours to size, so it caps the whole system however
+// generous everything upstream is. A new machine is a new row.
+//
+// Row fields:
+//   0  name           label for the customizer
+//   1  feed_opening   narrowest width of the machine's feed opening, mm
+//   2  source
+//
+// GreenBoy3D V1: the toolhead's feed bore, 18.30 mm, taken off the vendor STEP
+// files (centred on the extruder axis, identical in both sliding-pit parts),
+// not measured on the part.
+TARGET_GB3DPE = ["GreenBoy3D V1 toolhead", 18.30, "vendor STEP, both sliding-pit parts"];
+
+target_registry = [TARGET_GB3DPE];
+
+function target_name(type) = type[0]; //! Label for the customizer
+function target_feed_opening(type) = type[1]; //! Narrowest width of the machine's feed opening
+function target_source(type) = type[2]; //! Where the opening's size came from
+
+function target(index) =
+  assert(
+    is_num(index) && index >= 0 && index < len(target_registry),
+    str("target: index must be 0..", len(target_registry) - 1, ", got: ", index)
+  )
+  target_registry[index];
 
 /**
  * Smallest opening that will pass `particle_size` without arching, at `ratio`.
@@ -89,7 +111,7 @@ function flow_path_max_particle(sections) =
 //   density is a property of the shred, not of the polymer, so it travels with
 //   the machine and the material together.
 //   A hopper that bridges in service wants a measured wall friction angle
-//   against an actual printed surface, not a nudge to these. Tracked in TODO.md.
+//   against an actual printed surface, not a nudge to these. Tracked in issue #7.
 //
 // Note the convention: hopper literature usually quotes the angle from
 // VERTICAL, which is 90 minus these. 60 degrees from horizontal is 30 from
@@ -143,8 +165,7 @@ function feedstock(index) =
 // 20 mm bore, 21.5 mm over the tube wall, and a semicircular rib of 3.5 mm
 // diameter wound at 8.5 mm pitch, giving 25 mm overall. Right-handed, and the
 // tube and pitch figures are the corrected ones -- all three settled on a
-// coupon that screws in, not off a first caliper reading. See
-// cad/coupons/hose_thread_coupon.scad.
+// coupon that screws in, not off a first caliper reading.
 HOSE_GB3D = ["GB3D 1 m conveyor", 20, 21.5, 3.5, 8.5, "right"];
 
 hose_registry = [HOSE_GB3D];

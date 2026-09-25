@@ -88,7 +88,7 @@ module hopper_outlet(
   wall = 3,
   // Two fits, not one. The tube slides in the bore; the rib winds into the
   // groove. They are different fits on a moulded part nobody has measured a
-  // tolerance for, so they tune separately -- see cad/coupons/hose_thread_coupon.scad.
+  // tolerance for, so they tune separately.
   bore_clearance = 0.2,
   thread_clearance = 0.2
 ) {

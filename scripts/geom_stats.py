@@ -19,7 +19,6 @@ import tempfile
 from pathlib import Path
 
 SCAD = Path("cad/hopper/pellet_hopper.scad")
-COUPON = Path("cad/coupons/flow_coupon.scad")
 SIZES = {0: "150x150", 1: "175x175", 2: "202x202"}
 BASELINE = Path("tests/geometry-baseline.json")
 
@@ -46,11 +45,6 @@ def cases():
     # driver's own defaults.
     for variant in ("mk3s", "universal", "panel"):
         yield f"plate-{variant}", SCAD, ['render_part="plate"', f'plate_variant="{variant}"']
-
-    # The coupon at both angles worth comparing, and the stand that carries them.
-    for angle in (70, 60):
-        yield f"coupon-{angle}deg", COUPON, ['render_part="coupon"', f"angle={angle}"]
-    yield "coupon-stand", COUPON, ['render_part="stand"']
 
 
 def mesh_stats(stl: Path) -> dict:
@@ -89,9 +83,7 @@ def capture(facets: int) -> dict:
     out = {}
     with tempfile.TemporaryDirectory() as tmp:
         for key, scad, defines in cases():
-            # The driver takes its facet count from render_facets; the coupon
-            # is a standalone file and names its own preview_facets.
-            facet_var = "preview_facets" if scad == COUPON else "render_facets"
+            facet_var = "render_facets"
             stl = Path(tmp) / "part.stl"
             stl.unlink(missing_ok=True)
             args = ["openscad", "-o", str(stl)]

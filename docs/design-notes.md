@@ -1,8 +1,7 @@
 # Design notes
 
-Why the geometry is the way it is, and where the numbers came from. Decisions
-only — the hardware itself is in [`greenboy3d-extruder.md`](greenboy3d-extruder.md)
-and open work is in [`../TODO.md`](../TODO.md).
+Why the geometry is the way it is, and where the numbers came from. Open work is
+in the [issues](https://github.com/uwo-fast/feedstock-hopper/issues).
 
 ## Funnel angle is measured on the diagonal corner
 
@@ -162,22 +161,23 @@ the skirt in to 88 mm would clear it, at the cost of moving the hub fixings
 3.5 mm nearer the clearance hole.
 
 So the outlet's retention rests on the bayonet, and on the hose thread that
-screws into it. Whether that is enough is what `cad/coupons/hose_thread_coupon.scad`
-is for; until it is answered, strain-relieving the hose near the outlet is the
+screws into it. It has held in service; strain-relieving the hose near the outlet is still the
 cheap insurance, because it removes the torque instead of resisting it.
 
-## The toolhead's own feed bore caps the system at ~4.6 mm
+## The fed machine's opening caps the system
 
-Measured off the vendor STEP files rather than assumed: **Ø18.30 mm, centred on
-the extruder axis**, appearing identically in both sliding-pit parts at z 9.5
-and 10.1. That is where material drops onto the screw. It is machined metal and
-it is the one opening in the path we cannot size.
+The machine's own feed opening is the last section of the path, and it is
+metal and not ours to size, so it is a target registry row rather than a
+number in the check. On the GreenBoy3D toolhead it was taken off the vendor
+STEP files: **Ø18.30 mm, centred on the extruder axis**, identical in both
+sliding-pit parts at z 9.5 and 10.1. That is where material drops onto the
+screw.
 
 Against the parallel rule that gives a system ceiling of **6.1 mm for virgin
 pellets and 4.6 mm for regrind flake** — below the 5 mm the build is otherwise
 specified for. Our own sections are all sized for 5 mm, which is harmless
 headroom, but the assembled machine tops out lower and the spec echo now says
-so. Leaving the vendor bore out of the path would have reported a system limit
+so. Leaving the machine's opening out of the path would report a system limit
 we do not have.
 
 It also explains the 3 mm sieve the feedstock is currently prepared to: that is
@@ -244,6 +244,22 @@ All established by compiling on 2021.01, not from documentation.
   wrong is silent: the driver's facet setting simply has no effect, which is how
   a body render sat at 170 s regardless of what it was asked for.
 
+
+## Known limits
+
+Built, verified and working; nothing to do unless something changes.
+
+- **The coupling is past the bayonet library's exercised range.** Its examples
+  use `interface_radius` of 15 or less and its angular corrections are tuned for
+  `pin_radius` of 3.0 or less; we run 29.15 at 3.0. Rendering shows it seats,
+  captures and keys, but the detent's snap-past grew fourfold with the radius,
+  because it is placed by angle. Re-verify if the coupling grows again.
+- **Bin wall creep.** The safety factors in [`loads.md`](loads.md) are against
+  short-term yield and say little about months of sustained load on a
+  thermoplastic in a warm enclosure. The failure would be slow bowing, not a
+  break. In order of cost: raise `min_wall`, add perimeters, add a rib at
+  mid-height.
+
 ## References
 
 - [C] Conair — _What is Bulk Density?_ <https://www.conairgroup.com/resources/resource/what-is-bulk-density/>
@@ -251,4 +267,4 @@ All established by compiling on 2021.01, not from documentation.
 - [W] Wijay Systems — _Plastic pellet conveying systems_ <https://wijaysystems.com/plastic-pellet-conveying-systems/>
 - [P] Prusa Research — _Original Prusa i3 MK3S+_ <https://www.prusa3d.com/product/original-prusa-i3-mk3s-3d-printer-3/>
 - [B] `bayonet-lock-scad` <https://github.com/CameronBrooks11/bayonet-lock-scad>
-- GreenBoy3D sources are listed in [`greenboy3d-extruder.md`](greenboy3d-extruder.md).
+- GreenBoy3D toolhead: [`GB3DPE.md`](https://github.com/uwo-fast/Prusa-Firmware-GB3DPE/blob/MK3/GB3DPE.md) in the firmware repo.

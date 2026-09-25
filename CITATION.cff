@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this project, please cite it using the metadata below."
-title: "GB3DPE Pellet System"
+title: "feedstock-hopper"
 abstract: >-
-  Bulk pellet feed system, mounts, and operating documentation for the
-  GreenBoy3D pellet extruder running on a Prusa MK3S.
+  A parametric, printable bulk hopper for pellets and shredded regrind, with
+  quick-release couplings and a small adapter per machine.
 type: software
 authors:
   - family-names: "Brooks"
@@ -11,5 +11,5 @@ authors:
   - family-names: "Christ"
     given-names: "Hadden"
 version: "0.1.0"
-url: "https://github.com/uwo-fast/gb3dpe-pellet-system"
+url: "https://github.com/uwo-fast/feedstock-hopper"
 license: GPL-3.0-or-later
