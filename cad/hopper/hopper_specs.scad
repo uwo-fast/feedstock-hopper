@@ -32,12 +32,34 @@ FLOW_RATIO_CONVERGING_FLAKE = 10; //! Irregular flake, which interlocks
 FLOW_RATIO_PARALLEL_PELLET = 3; //! Round, free-flowing pellets
 FLOW_RATIO_PARALLEL_FLAKE = 4; //! Irregular flake
 
-// The GreenBoy3D toolhead's own feed bore, where material drops onto the screw.
-// Measured off the vendor STEP files: 18.30 mm, centred on the extruder axis,
-// appearing identically in both sliding-pit parts. It is metal and it is the one
-// opening in the whole path we cannot size, so it caps the system regardless of
-// how generous everything upstream is.
-GB3DPE_FEED_BORE = 18.30;
+// ===== Feed target =====
+
+// The machine the hopper feeds ends the flow path with an opening of its own.
+// It is metal and not ours to size, so it caps the whole system however
+// generous everything upstream is. A new machine is a new row.
+//
+// Row fields:
+//   0  name           label for the customizer
+//   1  feed_opening   narrowest width of the machine's feed opening, mm
+//   2  source
+//
+// GreenBoy3D V1: the toolhead's feed bore, 18.30 mm, taken off the vendor STEP
+// files (centred on the extruder axis, identical in both sliding-pit parts),
+// not measured on the part.
+TARGET_GB3DPE = ["GreenBoy3D V1 toolhead", 18.30, "vendor STEP, both sliding-pit parts"];
+
+target_registry = [TARGET_GB3DPE];
+
+function target_name(type) = type[0]; //! Label for the customizer
+function target_feed_opening(type) = type[1]; //! Narrowest width of the machine's feed opening
+function target_source(type) = type[2]; //! Where the opening's size came from
+
+function target(index) =
+  assert(
+    is_num(index) && index >= 0 && index < len(target_registry),
+    str("target: index must be 0..", len(target_registry) - 1, ", got: ", index)
+  )
+  target_registry[index];
 
 /**
  * Smallest opening that will pass `particle_size` without arching, at `ratio`.

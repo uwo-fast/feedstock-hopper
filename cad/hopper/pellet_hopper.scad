@@ -188,6 +188,9 @@ hub_counterbore = 8;
 
 hose_type = 0; // [0:GB3D 1 m conveyor]
 
+// The machine the hopper feeds. Its feed opening ends the flow path.
+target_type = 0; // [0:GreenBoy3D V1 toolhead]
+
 // Confirmed right-handed on a coupon. The socket is threaded to match the
 // hose's reinforcing rib, so this has to match the real hose or it simply will
 // not screw in. A new hose needs its handedness and fits found by trial.
@@ -331,6 +334,7 @@ assert(
 
 // Handedness is overridden here rather than in the registry, so the registry
 // keeps describing the part as bought and this stays a one-switch change.
+_target = target(target_type);
 _hose_row = hose(hose_type);
 _hose = [
   hose_name(_hose_row),
@@ -363,9 +367,9 @@ _path_max_particle = flow_path_max_particle(
     [throat - 2 * _inset, feedstock_converging_ratio(_feedstock)],
     [_bore, feedstock_converging_ratio(_feedstock)],
     [hose_bore(_hose), feedstock_parallel_ratio(_feedstock)],
-    // The toolhead's own bore. Not ours to size, and it is the binding section,
+    // The target machine's own opening. Not ours to size, and often the binding section,
     // so leaving it out would report a system limit we do not actually have.
-    [GB3DPE_FEED_BORE, feedstock_parallel_ratio(_feedstock)],
+    [target_feed_opening(_target), feedstock_parallel_ratio(_feedstock)],
   ]
 );
 
@@ -455,7 +459,8 @@ echo(
     design_particle_size, " mm ", feedstock_name(_feedstock),
     "); hose bore ", hose_bore(_hose),
     " mm (needs ", _required_parallel,
-    "); whole path passes up to ", _path_max_particle, " mm"
+    "); ", target_name(_target), " opening ", target_feed_opening(_target),
+    " mm; whole path passes up to ", _path_max_particle, " mm"
   )
 );
 
