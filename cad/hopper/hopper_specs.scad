@@ -111,7 +111,7 @@ function flow_path_max_particle(sections) =
 //   density is a property of the shred, not of the polymer, so it travels with
 //   the machine and the material together.
 //   A hopper that bridges in service wants a measured wall friction angle
-//   against an actual printed surface, not a nudge to these. Tracked in TODO.md.
+//   against an actual printed surface, not a nudge to these. Tracked in issue #7.
 //
 // Note the convention: hopper literature usually quotes the angle from
 // VERTICAL, which is 90 minus these. 60 degrees from horizontal is 30 from

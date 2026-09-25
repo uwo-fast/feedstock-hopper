@@ -21,7 +21,7 @@ Status, as of the current tree:
 | No operational features                  | **open** — no shutoff, sight window, level sensing or cap seal                                               |
 | Code structure                           | **fixed** — parameterised modules, one concern per file                                                      |
 
-Live work is tracked in [`TODO.md`](../TODO.md).
+Live work is tracked in the [issues](https://github.com/uwo-fast/feedstock-hopper/issues).
 
 ## Summary
 

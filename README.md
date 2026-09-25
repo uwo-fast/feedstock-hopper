@@ -1,60 +1,57 @@
-# GB3DPE Pellet System
+# feedstock-hopper
 
-> Bulk pellet feed system, mounts, and operating docs for the GreenBoy3D pellet
-> extruder running on a Prusa MK3S.
+> A parametric, printable bulk hopper for pellets and shredded regrind, with
+> quick-release couplings and a small adapter per machine.
 
-[![check](https://github.com/uwo-fast/gb3dpe-pellet-system/actions/workflows/check.yml/badge.svg)](https://github.com/uwo-fast/gb3dpe-pellet-system/actions/workflows/check.yml)
+[![check](https://github.com/uwo-fast/feedstock-hopper/actions/workflows/check.yml/badge.svg)](https://github.com/uwo-fast/feedstock-hopper/actions/workflows/check.yml)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](https://github.com/uwo-fast/.github/blob/main/CONTRIBUTING.md)
 
 ## Overview
 
-We run a [GreenBoy3D Pellet Extruder V1](docs/greenboy3d-extruder.md) on a Prusa
-MK3S, printing from virgin pellets and from shredded regrind. The machine works
-and prints well, but the extruder's own hopper is a 43 × 40 × 45 mm cup holding
-roughly 20–30 g of pellets — under an hour of printing before it needs
-refilling by hand.
+A gravity bulk hopper sized from what it has to pass, not from a capacity. You
+state the feedstock (virgin pellets or shredded regrind) and the largest
+particle, and the funnel angle, outlet and bin follow from bulk-solids flow
+rules; capacity is whatever that leaves, and every render reports it.
 
-This repository holds the bulk feed system that fixes that: a roof-mounted
-hopper on the printer enclosure, gravity-feeding the toolhead through the
-extruder's supplied conveyor tube, matching the feed architecture the stock
-hopper already uses. It also collects the mounts and operating documentation
-for the extruder that GreenBoy3D does not supply.
+It is modular at three [interfaces](docs/interfaces.md): the body twists into a
+bolted-down hub (A), an outlet twists into the hub's other end (B, varies with
+the hose or throat it feeds), and the hub bolts to a plate (C, varies with the
+machine). A new machine needs a plate and perhaps an outlet, not a new hopper.
+The machine's own feed opening is a registry row, and the report checks the
+whole path against it.
 
-Firmware lives separately, in
-[`uwo-fast/Prusa-Firmware-GB3DPE`](https://github.com/uwo-fast/Prusa-Firmware-GB3DPE).
+**Used on:**
+- **The GreenBoy3D pellet extruder on a Prusa MK3S**, in service in the lab,
+  feeding the toolhead through its 1 m conveyor tube from the MK3S frame mount.
+  The machine and its firmware are in
+  [`uwo-fast/Prusa-Firmware-GB3DPE`](https://github.com/uwo-fast/Prusa-Firmware-GB3DPE).
+- **Recyclebot v7** ([`uwo-fast/recyclebot`](https://github.com/uwo-fast/recyclebot)),
+  planned: an outlet that bolts to the extruder barrel's feed pad.
 
-**Status: printed and in service.** The hopper is built and feeding the
-extruder. The CAD started as an imported draft and has been through a full
-review — see [the review](docs/hopper-design-review.md) for what the draft got
-wrong and what has since been fixed. Every part compiles and holds its asserts
-under `just check`, and the geometry is regression-tested against a committed
-baseline.
-
-What the build has not yet produced is a record. The funnel's wall angle, the
-hose thread's fit and the mount under load were design targets, and the printed
-hopper is the evidence that would settle them — but the measurements have not
-been taken and the as-built deviations from the committed CAD are not written
-down. Treat the numbers here as targets the machine appears to satisfy rather
-than figures anyone has checked. [`TODO.md`](TODO.md) lists what still needs the
-bench.
+**Status.** Printed and in service. Every part compiles and holds its asserts
+under `just check`, and geometry is regression-tested against a committed
+baseline. The funnel angles are design targets the built hopper appears to
+satisfy, not measurements; open work is in the
+[issues](https://github.com/uwo-fast/feedstock-hopper/issues).
 
 ## Repository layout
 
-- `cad/hopper/` — parametric bulk hopper: body, cap, hub, outlet, and the
-  mounting plate in its universal, MK3S-frame and panel variants
-- `docs/` — extruder hardware reference, design notes, and operating procedures
-- `cad/coupons/` — printable test pieces
+- `cad/hopper/` — the hopper: body, cap, hub, outlet, the feedstock, hose and
+  target registries, and the plate in its universal, MK3S-frame and panel
+  variants
+- `docs/` — interfaces, design notes, feedstock, loads, printing, and the review
+  of the imported design
 - `examples/` — one file per configuration, each rendering standalone
-- `scripts/` — geometry regression harness
-- `tests/` — committed geometry baseline
+- `scripts/`, `tests/` — geometry regression harness and its baseline
 
 ## Getting started
 
 Requires [OpenSCAD](https://openscad.org/) (tested on 2021.01),
 [just](https://github.com/casey/just), and
 [`bayonet-lock-scad`](https://github.com/CameronBrooks11/bayonet-lock-scad)
-installed as an OpenSCAD library:
+installed as an OpenSCAD library, pinned by commit (it has no tags; 0.9.1 or
+later is required):
 
 ```sh
 git clone https://github.com/CameronBrooks11/bayonet-lock-scad \
@@ -62,16 +59,11 @@ git clone https://github.com/CameronBrooks11/bayonet-lock-scad \
 git -C ~/.local/share/OpenSCAD/libraries/bayonet-lock-scad checkout 85c43ae
 ```
 
-That library carries no git tags, so pin it by commit. Version 0.9.1 or later is
-required.
-
 ```sh
 just            # list recipes
 just check      # compile every part at every size, any diagnostic fails
 just geom       # check rendered geometry against the committed baseline
 just render     # write STLs for every part and size to build/
-just coupon     # export the flow test coupon (just coupon 60 for a shallower one)
-just hose-coupon # export a hose-thread test coupon at one clearance
 just edit       # open the assembly in the OpenSCAD GUI Customizer
 ```
 
@@ -98,7 +90,7 @@ renders on its own, so you can open `hopper_hub.scad` directly and iterate on
 the hub without the rest of the model in the way.
 
 `examples/` holds worked configurations that drive the modules directly rather
-than through the Customizer — the two feedstocks side by side, each split into
+than through the Customizer: the two feedstocks side by side, each split into
 the segments its funnel height demands, and the MK3S frame mount with the hub
 and outlet around it. They are covered by `just check`, so they cannot drift
 away from the API they demonstrate.
@@ -111,14 +103,12 @@ change.
 
 ## Documentation
 
-- [GreenBoy3D Pellet Extruder V1 — hardware reference](docs/greenboy3d-extruder.md)
+- [Interfaces](docs/interfaces.md) — the three couplings, and what a new machine needs
+- [Design notes](docs/design-notes.md) — why the geometry is the way it is, where the numbers came from, and known limits
 - [Feedstock](docs/feedstock.md) — measured bulk density and provenance
 - [Printing and assembly](docs/printing.md) — parts, orientations, hardware, order
 - [Load cases](docs/loads.md) — hand calculations and what they do not cover
-- [Design notes](docs/design-notes.md) — why the geometry is the way it is, and where the numbers came from
 - [Review of the imported hopper design](docs/hopper-design-review.md)
-- [First flash and bring-up](docs/operations/first-flash-checklist.md)
-- [PINDA probe-offset jog test](docs/operations/probe-offset-jog-test.md)
 
 ## Contributing
 
@@ -139,8 +129,7 @@ whose body, roof mount, cap and bayonet coupling are the basis of `cad/hopper/`.
 
 Released under the [GPL-3.0](LICENSE) license.
 
-GreenBoy3D is an independent vendor; this project is not affiliated with
-GreenBoy3D or Prusa Research. Vendor CAD files are not redistributed here.
+This project is not affiliated with GreenBoy3D or Prusa Research.
 
 ## Contact
 

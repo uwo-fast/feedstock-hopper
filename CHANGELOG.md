@@ -22,6 +22,9 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- The repository is now `feedstock-hopper` (formerly `gb3dpe-pellet-system`):
+  a machine-neutral hopper, with the GreenBoy3D setup as one machine it feeds.
+
 - Body segments are their own `render_part` entries -- `body0`, `body1` and so
   on -- rather than one `body` plus a separate `segment` index to say which. A
   segment is a separate print, so it is a separate part; asking for one the
@@ -130,6 +133,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   only ever exit on the skirt's 45 degree cone, where no head seats. The
   outlet's retention now rests on the bayonet and on the hose thread, which
   `cad/coupons/hose_thread_coupon.scad` exists to settle.
+- `TODO.md`. Open work is in the issues; the watch items are now "Known limits"
+  in `docs/design-notes.md`, and what the working machine had settled is gone.
+- The GreenBoy3D hardware reference and the operating procedures
+  (`docs/greenboy3d-extruder.md`, `docs/operations/`), consolidated into
+  `GB3DPE.md` in `uwo-fast/Prusa-Firmware-GB3DPE` with the firmware they belong
+  to.
 - The flow and hose-thread coupons (`cad/coupons/`), their `just coupon`,
   `coupon-stand` and `hose-coupon` recipes, and their gate and baseline entries.
   The hopper is built and in service, and each coupon had already settled what

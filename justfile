@@ -1,4 +1,4 @@
-# gb3dpe-pellet-system — CAD tasks
+# feedstock-hopper — CAD tasks
 # Requires: openscad (tested on 2021.01)
 
 hopper := "cad/hopper/pellet_hopper.scad"

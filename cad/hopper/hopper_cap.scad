@@ -8,7 +8,7 @@ use <hopper_util.scad>
  * A plain slip-on lid, sitting on z = 0 at its own rim.
  *
  * It has no seal and no latch, so it keeps debris out but does nothing to keep
- * pellets dry. Tracked in TODO.md.
+ * pellets dry. Tracked in issue #8.
  */
 module hopper_cap(
   top_x,
