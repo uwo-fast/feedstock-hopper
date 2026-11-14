@@ -86,10 +86,10 @@ it; the assert refused the old size; the resize followed.
 
 The joint was hand-rolled with rectangular tabs. It now comes from our own
 `bayonet-lock-scad`, which brings a hard end stop, a keyed pattern, and a
-thicker socket wall outside the channel. The library has no git tags, so it is
-pinned by commit `85c43ae` (v0.11.0); at least 0.9.1 is required, which fixed
-the z alignment of the two halves when `entry_depth` is not half of
-`part_height`, exactly the case used here.
+thicker socket wall outside the channel. It is pinned to the `v0.12.0` tag (it
+was pinned by commit `85c43ae`, v0.11.0, before the library published tags);
+at least 0.9.1 is required, which fixed the z alignment of the two halves when
+`entry_depth` is not half of `part_height`, exactly the case used here.
 
 Four decisions worth recording:
 
@@ -102,7 +102,8 @@ with 99.6 mm³ of overlap when lifted by `entry_depth`; at 0° they lift straigh
 out. `joint_neck()` is therefore authored pre-rotated, so the body's nominal
 orientation is the seated one. Getting this wrong sits the bin 25° skew to the
 roof — and note the sign depends on `turn_direction`, so a result measured for
-`CW` does not carry over.
+`CW` does not carry over. (The library's README was corrected in 0.12.0, which
+also adds `bayonet_locked_rotation()`, `+sweep_angle` for `CCW`.)
 
 **The annular seat stays.** Both library halves span the same z range with
 nothing to bottom out on, so the pins would carry the entire pellet load. The
@@ -123,7 +124,9 @@ can merge into a continuous slot — no retention at all — with every library
 assert passing. It also never checks that the channel stays inside the part, or
 that the shell is thinner than the interface radius; either failure yields a
 plausible-looking part that does not lock. `hopper_joint()` asserts all three,
-plus that the pellet bore does not cut into the pins.
+plus that the pellet bore does not cut into the pins. (Since 0.12.0 the library
+refuses a sweep past its turn stop and a channel that breaks out of the bottom
+face; ours stay, being stricter and covering the shell and the bore too.)
 
 Verified in situ against the assembled mount, not just as two isolated halves:
 the body seats at its nominal orientation, is captured when lifted (67 mm³ of

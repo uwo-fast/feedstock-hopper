@@ -22,6 +22,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- `bayonet-lock-scad` is pinned to its `v0.12.0` tag instead of commit `85c43ae`
+  (v0.11.0), in CI, the README and the design notes. Every `just check` case
+  renders byte-identically on both, and `just geom` reports the same figures on
+  both.
 - The repository is now `feedstock-hopper` (formerly `gb3dpe-pellet-system`):
   a machine-neutral hopper, with the GreenBoy3D setup as one machine it feeds.
 
