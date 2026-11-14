@@ -26,13 +26,12 @@ jobs:
 
       - uses: extractions/setup-just@v2
 
-      # No git tags on the library, so it is pinned by commit -- the same one
-      # docs/design-notes.md records.
+      # Pinned to the library's tag -- the same one docs/design-notes.md records.
       - name: Install bayonet-lock-scad
         run: |
           git clone --quiet https://github.com/CameronBrooks11/bayonet-lock-scad \
             "$HOME/.local/share/OpenSCAD/libraries/bayonet-lock-scad"
-          git -C "$HOME/.local/share/OpenSCAD/libraries/bayonet-lock-scad" checkout --quiet 85c43ae
+          git -C "$HOME/.local/share/OpenSCAD/libraries/bayonet-lock-scad" checkout --quiet v0.12.0
 
       # xvfb because some OpenSCAD builds still want a display to export from,
       # even headless.

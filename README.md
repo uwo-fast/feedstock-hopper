@@ -50,13 +50,13 @@ satisfy, not measurements; open work is in the
 Requires [OpenSCAD](https://openscad.org/) (tested on 2021.01),
 [just](https://github.com/casey/just), and
 [`bayonet-lock-scad`](https://github.com/CameronBrooks11/bayonet-lock-scad)
-installed as an OpenSCAD library, pinned by commit (it has no tags; 0.9.1 or
-later is required):
+installed as an OpenSCAD library, pinned to its `v0.12.0` tag (0.9.1 or later is
+required):
 
 ```sh
 git clone https://github.com/CameronBrooks11/bayonet-lock-scad \
   ~/.local/share/OpenSCAD/libraries/bayonet-lock-scad
-git -C ~/.local/share/OpenSCAD/libraries/bayonet-lock-scad checkout 85c43ae
+git -C ~/.local/share/OpenSCAD/libraries/bayonet-lock-scad checkout v0.12.0
 ```
 
 ```sh

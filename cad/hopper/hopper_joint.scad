@@ -4,19 +4,21 @@
 
 use <bayonet-lock-scad/bayonet_lock.scad>
 
-// Built on bayonet-lock-scad, installed as a global OpenSCAD library. It has no
-// git tags, so pin it by commit: 85c43ae (v0.11.0). At least 0.9.1 is required,
-// which fixed the z alignment of the two halves when entry_depth is not half of
-// part_height -- exactly the case used here.
+// Built on bayonet-lock-scad, installed as a global OpenSCAD library and pinned
+// to its v0.12.0 tag. At least 0.9.1 is required, which fixed the z alignment of
+// the two halves when entry_depth is not half of part_height -- exactly the case
+// used here.
 //
 // Both halves come from ONE joint spec built by the driver, so a mismatch is
 // impossible by construction rather than by discipline.
 //
-// TWO THINGS THE LIBRARY WILL NOT DO FOR YOU, both verified here by rendering:
+// TWO THINGS THE LIBRARY DID NOT DO FOR US, both verified here by rendering:
 //
-// 1. MATING CONVENTION. The library README says instantiating both halves at a
-//    common origin gives the locked position. It does not: a common origin is
-//    the ENTRY position, pins sitting at the channel mouths. For
+// 1. MATING CONVENTION. Up to 0.11.1 the library README said instantiating both
+//    halves at a common origin gives the locked position. It does not: a common
+//    origin is the ENTRY position, pins sitting at the channel mouths. 0.12.0
+//    documents this and adds bayonet_locked_rotation(), which for "CCW" is the
+//    same +sweep_angle used below. For
 //    turn_direction "CCW" the locked position is +sweep_angle. Measured by
 //    intersecting the halves -- at +25 they seat with no interference and, when
 //    lifted by entry_depth, stay captured with 99.6 mm3 of overlap; at 0 they
@@ -24,12 +26,15 @@ use <bayonet-lock-scad/bayonet_lock.scad>
 //    lets the driver place the body at its nominal orientation and have it be
 //    seated. Get this wrong and the bin sits 25 degrees skew to the roof.
 //
-// 2. THE ASSERTS BELOW. The library checks sweep_angle against the raw pin gap
-//    but not the sweep's own tangency extension, so adjacent channels can merge
-//    into a continuous slot -- leaving no retention at all -- while every
-//    library assert passes. It also never checks that the channel stays inside
-//    the part, nor that the shell is thinner than the interface radius, and
-//    either failure produces a plausible-looking part with no locking.
+// 2. THE ASSERTS BELOW. Up to 0.11.1 the library checked sweep_angle against
+//    the raw pin gap but not the sweep's own tangency extension, so adjacent
+//    channels could merge into a continuous slot while every library assert
+//    passed, and it never checked that the channel stays inside the part. 0.12.0
+//    refuses a sweep past the turn stop (smallest gap less two channel
+//    half-angles) and a channel that breaks out of the bottom face. The asserts
+//    below stay: they are stricter (no merged channels at all, a strict
+//    inequality on the channel depth) and also cover the shell thickness against
+//    the interface radius, and the pellet bore against the pins.
 //
 // See docs/design-notes.md.
 
