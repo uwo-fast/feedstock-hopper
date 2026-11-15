@@ -8,17 +8,18 @@ in the [issues](https://github.com/uwo-fast/feedstock-hopper/issues).
 On a rectangular funnel the corner runs further out than either flat face over
 the same drop, so it is always the shallowest surface. Pellets bridge on the
 shallowest surface, not the average one, so constraining a face leaves the
-corner well under target — the imported design sat at 32–50° on its faces but
-27–36° at the corner.
+corner well under target -- the imported design sat at 32-50 degrees on its
+faces but 27-36 degrees at the corner.
 
 A rectangular bin also cannot hold equal X and Y angles for one drop, so a
 single "wall angle" has to name a surface. The corner is the honest choice: set
 it, and both faces come out steeper.
 
 Hopper literature usually quotes the angle from **vertical**; ours is from
-**horizontal**, which is 90 minus theirs. 60° here is 30° from vertical.
+**horizontal**, which is 90 minus theirs. 60 degrees here is 30 degrees from
+vertical.
 
-## Feedstock minimum angles: 60° virgin, 70° regrind
+## Feedstock minimum angles: 60 degrees virgin, 70 degrees regrind
 
 Design targets from general bulk-solids practice, **not measurements**. The
 critical mass-flow angle depends on the material _and_ on the wall friction of
@@ -31,9 +32,9 @@ wall friction angle against an actual printed surface, not a nudge to these.
 
 ## Bulk densities: 0.62 kg/L virgin (assumed), 0.489 kg/L regrind (measured)
 
-Pellet bulk density spans roughly 450–850 kg/m³ across resin types [C]; virgin
+Pellet bulk density spans roughly 450-850 kg/m3 across resin types [C]; virgin
 PLA sits near the middle of that. Regrind flake is markedly lighter and its
-density is variable rather than a property [W] — which is exactly why the
+density is variable rather than a property [W] -- which is exactly why the
 regrind figure is now **measured** rather than assumed: 0.489 kg/L on our own
 shred. See [`feedstock.md`](feedstock.md). Virgin is still the general-practice
 0.62 and worth measuring the same way if it ever becomes the main feedstock.
@@ -44,33 +45,33 @@ figure in this repo inherits their uncertainty.
 ## `min_wall` is perpendicular material, compensated on the corner
 
 Wall thickness is applied by insetting the inner surface horizontally, but on a
-face sloped at θ the material perpendicular to it is only `inset · sin θ`. The
-imported design applied 3 mm horizontally, which is 1.61 mm of real material on
-the 10 kg funnel.
+face sloped at theta the material perpendicular to it is only `inset *
+sin(theta)`. The imported design applied 3 mm horizontally, which is 1.61 mm of
+real material on the 10 kg funnel.
 
-The inset is sized on the corner angle — the shallowest surface — so nothing
+The inset is sized on the corner angle -- the shallowest surface -- so nothing
 finishes thinner than asked; flat faces and the vertical bin come out thicker.
 One inset for the whole profile also keeps every inner surface parallel to its
 outer, so the funnel meets the bin with no internal ledge to catch pellets.
 
-Verified on the rendered mesh rather than by trig: at the funnel corner a
+Verified on the rendered mesh: at the funnel corner a
 1.44 mm sphere sits entirely inside the wall and a 1.56 mm one breaks out,
 bracketing the 3.00 mm target.
 
 ## Inner corner radii must follow the wall inward
 
 An inner radius clamped at a floor is no longer a parallel offset, and it thins
-the wall exactly at the corner that is already shallowest — about 8% in the
+the wall exactly at the corner that is already shallowest -- about 8% in the
 imported geometry. So the radii subtract the inset and the geometry **asserts**
 the result stays at or above 0.8 mm, roughly two 0.4 mm extrusions, rather than
 clamping quietly.
 
 ## Physical rules live in functions, not in comments
 
-Anything the geometry depends on physically — how much room a particle needs,
-how steep a wall has to be, how much a litre of feedstock weighs — is a function
-or a registry row in `hopper_specs.scad`, never a bare number with a note
-beside it.
+Anything the geometry depends on physically -- how much room a particle needs,
+how steep a wall has to be, how much a litre of feedstock weighs -- is a
+function or a registry row in `hopper_specs.scad`, never a bare number with a
+note beside it.
 
 That lets the same rule be read both ways. Give it a requirement and it sizes
 the geometry: `design_particle_size = 5` with regrind selected demands a 50 mm
@@ -91,60 +92,8 @@ was pinned by commit `85c43ae`, v0.11.0, before the library published tags);
 at least 0.9.1 is required, which fixed the z alignment of the two halves when
 `entry_depth` is not half of `part_height`, exactly the case used here.
 
-Four decisions worth recording:
-
-**The locked position is `+sweep_angle`, not a common origin.** The library
-README says instantiating both halves at a common origin gives the locked
-position. Measured by intersecting the two halves, it does not: a common origin
-is the _entry_ position, and for `turn_direction = "CCW"` locked is
-`+sweep_angle`. At +25° the halves seat with no interference and stay captured
-with 99.6 mm³ of overlap when lifted by `entry_depth`; at 0° they lift straight
-out. `joint_neck()` is therefore authored pre-rotated, so the body's nominal
-orientation is the seated one. Getting this wrong sits the bin 25° skew to the
-roof — and note the sign depends on `turn_direction`, so a result measured for
-`CW` does not carry over. (The library's README was corrected in 0.12.0, which
-also adds `bayonet_locked_rotation()`, `+sweep_angle` for `CCW`.)
-
-**The annular seat stays.** Both library halves span the same z range with
-nothing to bottom out on, so the pins would carry the entire pellet load. The
-mount keeps the flange top between the pellet bore and the socket bore as a
-~430 mm² land. Flat bearing there is well under 1 MPa; sphere-in-trough contact
-would be tens of MPa, which does not break but beds in, and every 0.1 mm of
-bed-in is 0.1 mm of new axial slop.
-
-**The pattern is keyed.** Four evenly spaced pins give four identical locked
-positions, and the bin is rectangular, so half of them mount it crosswise.
-`key_angle = 15°` pulls one pin off the even pattern; the resulting margin (15°)
-clears the channel half-angle (8.1°), and the smallest gap (75°) clears the
-channel-merge floor (49.3°).
-
-**Three asserts are ours, not the library's.** It checks `sweep_angle` against
-the raw pin gap but not the sweep's own tangency extension, so adjacent channels
-can merge into a continuous slot — no retention at all — with every library
-assert passing. It also never checks that the channel stays inside the part, or
-that the shell is thinner than the interface radius; either failure yields a
-plausible-looking part that does not lock. `hopper_joint()` asserts all three,
-plus that the pellet bore does not cut into the pins. (Since 0.12.0 the library
-refuses a sweep past its turn stop and a channel that breaks out of the bottom
-face; ours stay, being stricter and covering the shell and the bore too.)
-
-Verified in situ against the assembled mount, not just as two isolated halves:
-the body seats at its nominal orientation, is captured when lifted (67 mm³ of
-interference at 2 mm, 188 mm³ at 5 mm), and is blocked at 90°, 180° and 270°, so
-the keying does prevent a crosswise mount. The annular seat measures 213.5 mm³
-over a 0.5 mm probe against 214.1 mm³ predicted, so it is fully intact. Seated,
-there is 0.25 mm³ of interference across the whole joint, unchanged at higher
-facet counts and therefore real rather than faceting — consistent with the
-library's detent sitting just short of the stop, i.e. a light snap-past.
-
-**We are outside the library's exercised range.** Every example it ships uses
-`interface_radius` of 15 or less, and its angular corrections carry a source
-comment saying they were empirically tuned and validated for `pin_radius` up to
-3.0. We run `interface_radius` 29.15 at `pin_radius` 3.0. The geometry is
-verified correct here — it seats, captures and keys — but the detent grows with
-radius (0.25 mm³ of snap-past at 22.15, 1.05 mm³ at 29.15) because it is placed
-by angle, so its arc length scales. Worth re-checking if the coupling grows
-again.
+The decisions behind how it is used, and how they were verified, are in the
+[design log](https://github.com/uwo-fast/feedstock-hopper/blob/main/dev/design-log.md).
 
 **Anti-rotation is not a screw.** A radial self-tapping M4 into a pocket in the
 neck was tried and removed. Two sockets are not the same case, and treating them
@@ -156,12 +105,8 @@ releases nothing and the screw guarded a failure gravity already prevents. At
 the **lower** socket the outlet simply drops out, and the hub is an open bore,
 so the hopper would drain through it.
 
-The lower screw was also unbuildable as drawn, and structurally so. The assert
-keeping the pilot clear of the channel puts `retainer_z` in (9.15, 16.30), which
-on the inverted socket is world z (1.70, 8.85) — entirely inside an 11.50 mm
-skirt flare. It could only ever exit on a 45° cone, where no head seats. Pulling
-the skirt in to 88 mm would clear it, at the cost of moving the hub fixings
-3.5 mm nearer the clearance hole.
+The lower screw was also unbuildable as drawn: it could only exit on the hub
+skirt's 45 degree cone, where no head seats.
 
 So the outlet's retention rests on the bayonet, and on the hose thread that
 screws into it. It has held in service; strain-relieving the hose near the outlet is still the
@@ -172,81 +117,25 @@ cheap insurance, because it removes the torque instead of resisting it.
 The machine's own feed opening is the last section of the path, and it is
 metal and not ours to size, so it is a target registry row rather than a
 number in the check. On the GreenBoy3D toolhead it was taken off the vendor
-STEP files: **Ø18.30 mm, centred on the extruder axis**, identical in both
+STEP files: **dia 18.30 mm, centred on the extruder axis**, identical in both
 sliding-pit parts at z 9.5 and 10.1. That is where material drops onto the
 screw.
 
 Against the parallel rule that gives a system ceiling of **6.1 mm for virgin
-pellets and 4.6 mm for regrind flake** — below the 5 mm the build is otherwise
+pellets and 4.6 mm for regrind flake** -- below the 5 mm the build is otherwise
 specified for. Our own sections are all sized for 5 mm, which is harmless
 headroom, but the assembled machine tops out lower and the spec echo now says
 so. Leaving the machine's opening out of the path would report a system limit
 we do not have.
 
-It also explains the 3 mm sieve the feedstock is currently prepared to: that is
-6.1x the bore, comfortably inside, rather than an arbitrary choice.
+It also explains the 3 mm sieve the feedstock is currently prepared to: the bore
+is 6.1x the sieve, comfortably inside, rather than an arbitrary choice.
 
-## Build volume 250 × 210 × 210 mm
+## Build volume 250 x 210 x 210 mm
 
 The Original Prusa i3 MK3S envelope [P], and the largest printer available here
 for the foreseeable future. Reported on every render; `require_printable` turns
-it into a hard error, and is off until the presets are re-derived, since no
-preset currently fits at a workable funnel angle.
-
-## No BOSL2
-
-BOSL2 is installed globally and its `prismoid(xang=)` is close to the feature we
-needed, but it does not solve the shell problem — its only true 3D offset uses
-`minkowski()` and its own docs advise against it — so an inner solid still has
-to be subtracted and the `sin θ` compensation still has to be written by hand.
-Measured on this geometry the plain-OpenSCAD version rendered slightly faster.
-Not worth a second dependency and ~1850 global symbols for one `tan()`.
-
-Revisit if rounded _horizontal_ edges (a bin rim, a funnel-to-bin fillet) or
-threads are ever needed; those are genuinely painful to hand-roll.
-
-## OpenSCAD behaviour this repo depends on
-
-All established by compiling on 2021.01, not from documentation.
-
-- `use <>` imports modules and functions but **not variables**, and is not
-  transitive through another `use`. Hence accessor functions on every registry.
-- A module reading a caller's global across `use <>` is a **warning, exit 0**,
-  and silently coerces `undef` into geometry — it ships a wrong part rather than
-  failing. Hence `--hardwarnings` in the gate, and modules that never read
-  globals.
-- Customizer parameters must be top-level assignments in the **main file**,
-  textually before the first `module` definition. Parameters in an included file
-  never reach the panel. Hence the dummy-module fence in `pellet_hopper.scad`.
-- A failing `assert()` exits 1 on STL export and writes no file, so asserts are
-  usable as a gate — but `-o file.echo` exits 0 through the same failure.
-- A top-level `assert()` **statement cannot guard the assignments above it**.
-  Assignments in a scope are evaluated before the statements run, so a bad
-  parameter reaches the geometry first and reports as `undefined operation`
-  from inside whatever function touched it — three files from the cause, with
-  the assert never firing. Put it in the assignment expression instead
-  (`x = assert(cond, msg) value;`) or inside an accessor function. That is why
-  every registry here validates its index in the accessor rather than beside it.
-- A reversed range `[begin:end]` with `begin > end` reports only `DEPRECATED`,
-  exits 0 **even under `--hardwarnings`**, and iterates backwards instead of
-  empty. The gate greps for it. Soft diagnostics must therefore never echo the
-  literal tokens `ERROR:`, `WARNING:` or `DEPRECATED:`.
-- STL facets are not emitted in a stable order, so meshes cannot be compared by
-  hash. `just geom` compares signed volume, bounding box and triangle count.
-- **Two solids meeting on a coincident plane are not reliably one volume.** They
-  union without complaint, render clean, pass every assert, and export an STL
-  that slices as several separate objects. This has caught us three times — the
-  coupon's legs against its flange, the MK3S saddle against its plate, and the
-  outlet's cone against its neck. Overlap anything that has to be one part, and
-  never rely on faces just touching. `just check` now reads CGAL's volume count
-  and fails a part that is not exactly one solid, which is the only reliable way
-  to notice.
-- A `use`d file's own top-level `$fn` is what **its** modules see, overriding
-  whatever the consumer set. So no file here assigns `$fn` at top level except
-  the driver; standalone previews pass `$fn` on the call instead. Getting this
-  wrong is silent: the driver's facet setting simply has no effect, which is how
-  a body render sat at 170 s regardless of what it was asked for.
-
+it into a hard error. It is on, and every preset passes with it.
 
 ## Known limits
 
@@ -265,9 +154,9 @@ Built, verified and working; nothing to do unless something changes.
 
 ## References
 
-- [C] Conair — _What is Bulk Density?_ <https://www.conairgroup.com/resources/resource/what-is-bulk-density/>
-- [J] Jenike & Johanson — _Designing bulk material storage and feeding systems_ <https://jenike.com/designing-end-to-end-bulk-material-storage-and-feeding-systems-hoppers-silos-mass-flow-feeders/>
-- [W] Wijay Systems — _Plastic pellet conveying systems_ <https://wijaysystems.com/plastic-pellet-conveying-systems/>
-- [P] Prusa Research — _Original Prusa i3 MK3S+_ <https://www.prusa3d.com/product/original-prusa-i3-mk3s-3d-printer-3/>
+- [C] Conair -- _What is Bulk Density?_ <https://www.conairgroup.com/resources/resource/what-is-bulk-density/>
+- [J] Jenike & Johanson -- _Designing bulk material storage and feeding systems_ <https://jenike.com/designing-end-to-end-bulk-material-storage-and-feeding-systems-hoppers-silos-mass-flow-feeders/>
+- [W] Wijay Systems -- _Plastic pellet conveying systems_ <https://wijaysystems.com/plastic-pellet-conveying-systems/>
+- [P] Prusa Research -- _Original Prusa i3 MK3S+_ <https://www.prusa3d.com/product/original-prusa-i3-mk3s-3d-printer-3/>
 - [B] `bayonet-lock-scad` <https://github.com/CameronBrooks11/bayonet-lock-scad>
 - GreenBoy3D toolhead: [`GB3DPE.md`](https://github.com/uwo-fast/Prusa-Firmware-GB3DPE/blob/MK3/GB3DPE.md) in the firmware repo.

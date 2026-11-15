@@ -9,7 +9,7 @@
 // top-level assignments in THIS file, textually before the first module
 // definition, reach the parameter panel. Parameters in an included file never
 // appear. Hence the dummy module below, which fences the tunable parameters off
-// from the derived values beneath it. See docs/design-notes.md.
+// from the derived values beneath it. See dev/design-log.md.
 
 include <hopper_colours.scad>
 include <hopper_specs.scad>

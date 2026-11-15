@@ -40,5 +40,5 @@ module hopper_cap(
 }
 
 // Standalone preview. $fn is passed on the call, never assigned at top level --
-// see docs/design-notes.md for why that is not optional.
+// see dev/design-log.md for why that is not optional.
 hopper_cap(top_x=220, top_y=180, $fn=$preview ? 48 : 120);

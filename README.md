@@ -4,7 +4,7 @@
 > quick-release couplings and a small adapter per machine.
 
 [![check](https://github.com/uwo-fast/feedstock-hopper/actions/workflows/check.yml/badge.svg)](https://github.com/uwo-fast/feedstock-hopper/actions/workflows/check.yml)
-[![License: GPL-3.0](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/uwo-fast/feedstock-hopper/blob/main/LICENSE)
 [![Contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](https://github.com/uwo-fast/.github/blob/main/CONTRIBUTING.md)
 
 ## Overview
@@ -26,8 +26,8 @@ whole path against it.
   feeding the toolhead through its 1 m conveyor tube from the MK3S frame mount.
   The machine and its firmware are in
   [`uwo-fast/Prusa-Firmware-GB3DPE`](https://github.com/uwo-fast/Prusa-Firmware-GB3DPE).
-- **Recyclebot v7** ([`uwo-fast/recyclebot`](https://github.com/uwo-fast/recyclebot)),
-  planned: an outlet that bolts to the extruder barrel's feed pad.
+- **A filament recycling extruder**, planned: an outlet that bolts to the
+  extruder barrel's feed pad.
 
 **Status.** Printed and in service. Every part compiles and holds its asserts
 under `just check`, and geometry is regression-tested against a committed
@@ -37,13 +37,13 @@ satisfy, not measurements; open work is in the
 
 ## Repository layout
 
-- `cad/hopper/` — the hopper: body, cap, hub, outlet, the feedstock, hose and
+- `cad/hopper/` -- the hopper: body, cap, hub, outlet, the feedstock, hose and
   target registries, and the plate in its universal, MK3S-frame and panel
   variants
-- `docs/` — interfaces, design notes, feedstock, loads, printing, and the review
-  of the imported design
-- `examples/` — one file per configuration, each rendering standalone
-- `scripts/`, `tests/` — geometry regression harness and its baseline
+- `docs/` -- interfaces, design notes, feedstock, loads and printing
+- `dev/` -- the design log and the review of the imported design
+- `examples/` -- one file per configuration, each rendering standalone
+- `scripts/`, `tests/` -- geometry regression harness and its baseline
 
 ## Getting started
 
@@ -82,8 +82,8 @@ shallowest angle it will still flow at, and a render below it is an error rather
 than a quiet under-performing hopper.
 
 Note that the presets are named for their footprint rather than a capacity. The
-imported design worked the other way round — capacity first, wall angle whatever
-was left — which is how it ended up at 27 to 36 degrees at the corner.
+imported design worked the other way round -- capacity first, wall angle
+whatever was left -- which is how it ended up at 27 to 36 degrees at the corner.
 
 Each of the other files under `cad/hopper/` defines one part or one concern and
 renders on its own, so you can open `hopper_hub.scad` directly and iterate on
@@ -103,12 +103,13 @@ change.
 
 ## Documentation
 
-- [Interfaces](docs/interfaces.md) — the three couplings, and what a new machine needs
-- [Design notes](docs/design-notes.md) — why the geometry is the way it is, where the numbers came from, and known limits
-- [Feedstock](docs/feedstock.md) — measured bulk density and provenance
-- [Printing and assembly](docs/printing.md) — parts, orientations, hardware, order
-- [Load cases](docs/loads.md) — hand calculations and what they do not cover
-- [Review of the imported hopper design](docs/hopper-design-review.md)
+- [Interfaces](docs/interfaces.md) -- the three couplings, and what a new machine needs
+- [Design notes](docs/design-notes.md) -- why the geometry is the way it is, where the numbers came from, and known limits
+- [Feedstock](docs/feedstock.md) -- measured bulk density and provenance
+- [Printing and assembly](docs/printing.md) -- parts, orientations, hardware, order
+- [Load cases](docs/loads.md) -- hand calculations and what they do not cover
+- [Design log](https://github.com/uwo-fast/feedstock-hopper/blob/main/dev/design-log.md) and
+  [review of the imported design](https://github.com/uwo-fast/feedstock-hopper/blob/main/dev/hopper-design-review.md)
 
 ## Contributing
 
@@ -118,7 +119,7 @@ Contributions are welcome. See the organization
 ## Citation
 
 If you use this project in your work, please cite it. Use the **Cite this
-repository** button on GitHub, or see [`CITATION.cff`](CITATION.cff).
+repository** button on GitHub, or see [`CITATION.cff`](https://github.com/uwo-fast/feedstock-hopper/blob/main/CITATION.cff).
 
 ## Acknowledgements
 
@@ -127,7 +128,7 @@ whose body, roof mount, cap and bayonet coupling are the basis of `cad/hopper/`.
 
 ## License
 
-Released under the [GPL-3.0](LICENSE) license.
+Released under the [GPL-3.0](https://github.com/uwo-fast/feedstock-hopper/blob/main/LICENSE) license.
 
 This project is not affiliated with GreenBoy3D or Prusa Research.
 
