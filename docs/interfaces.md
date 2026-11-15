@@ -29,15 +29,15 @@ flat piece of material with holes in it.
 
 | Part       | Prints                                                                                                                                                                     |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **hub**    | standing on its bottom face. A skirt flares out to 85 mm at the bed and tapers _in_ to the 72 mm tube, so there is no overhang anywhere — both sockets are internal bores. |
+| **hub**    | standing on its bottom face. A skirt flares out to 95 mm at the bed and tapers _in_ to the 72 mm tube, so there is no overhang anywhere — both sockets are internal bores. |
 | **plate**  | flat. A clearance hole, four holes for the hub, and the machine's own pattern. No features on either face, so it can equally be laser-cut, acrylic or plywood.             |
 | **outlet** | neck upward. Converges to the hose socket, which sits on the bed.                                                                                                          |
 
 Two things fall out of bolting the hub down rather than clamping it:
 
 - **The hopper stays retained with the outlet removed.** If the outlet were what
-  held the stack together, twisting it off to clear a jam would leave 3 kg of
-  full hopper loose on the plate.
+  held the stack together, twisting it off to clear a jam would leave 4.24 kg
+  of full hopper loose on the plate.
 - **The hub cannot rotate** when the body is twisted into it, so no separate
   anti-rotation feature is needed.
 
@@ -48,7 +48,7 @@ for the uncertainty to sit.
 ## A — hopper
 
 The existing coupling, unchanged: 58 mm neck in a 72 mm socket, 18 mm deep,
-25° quarter turn, keyed. 50 mm pellet bore. Sized by the converging-outlet flow
+25° turn, keyed. 50 mm pellet bore. Sized by the converging-outlet flow
 rule — see [`design-notes.md`](design-notes.md).
 
 ## B — outlet
@@ -110,8 +110,8 @@ plate satisfies it with three things:
 | hub fixings            | 4 × M4 on a **Ø79** circle | outboard of the hub's 72 mm tube, inboard of its 95 mm skirt; through-bolted, nut in a Ø8 counterbore |
 | machine pattern        | machine-specific           | the only part that touches reality                                                                    |
 
-Bearing is a non-issue — the hub seats on a 722 mm² annulus, which is 0.04 MPa
-at 3 kg against roughly 50 MPa for PETG. Plate _bending_ around a 65 mm hole is
+Bearing is a non-issue — the hub seats on a 722 mm² annulus, which is 0.06 MPa
+at the loaded 4.24 kg against roughly 50 MPa for PETG. Plate _bending_ around a 65 mm hole is
 the thing to size for, and plate thickness is a parameter for that reason.
 
 Plates:
@@ -125,9 +125,10 @@ Plates:
   to match. Drill the panel Ø65 for the outlet neck
   and use washers or a backing plate: four M4 heads on thin sheet under a
   sustained few kilograms will dimple it long before anything breaks.
-- **Stand** — decouples the load from the printer entirely. Worth having, since
-  410 mm of body on a 370 mm frame puts roughly 3 kg at around 800 mm on a
-  machine that slings its bed in Y.
+- **Stand** — not built; there is no `stand` plate variant. It would decouple
+  the load from the printer entirely. Worth having, since 410 mm of body on a
+  370 mm frame puts 4.24 kg at around 800 mm on a machine that slings its bed
+  in Y.
 
 ### The MK3S plate clamps rather than hooks
 

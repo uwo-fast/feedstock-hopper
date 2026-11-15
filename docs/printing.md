@@ -11,10 +11,11 @@ the MK3S frame. `just render` writes every part.
 | body segment 1 | 1   | 202 × 202 × 205 | ~0.66 kg | as modelled                |
 | cap            | 1   | 209 × 209 × 19  | ~0.22 kg | **flip** — top face down   |
 | hub            | 1   | 95 × 95 × 36    | ~0.08 kg | as modelled                |
-| plate (MK3S)   | 1   | 135 × 135 × 98  | ~0.33 kg | **flip** — plate face down |
+| plate (MK3S)   | 1   | 135 × 135 × 98  | ~0.46 kg | **flip** — plate face down |
 | outlet         | 1   | 59 × 61 × 83    | ~0.06 kg | as modelled                |
 
-About 1.7 kg of PETG all told. Segment 1 at 202 × 202 leaves 4 mm either side
+About 1.8 kg of PETG all told. Masses are the solid model volume at
+1.27 g/cm3; infill below 100% brings them down. Segment 1 at 202 × 202 leaves 4 mm either side
 on an MK3S bed, and the cap at 209 leaves half a millimetre — check first layer
 placement rather than trusting it.
 
@@ -43,7 +44,7 @@ the wall texture the funnel angle depends on.
 
 Perimeters matter more than infill here. Everything structural in
 [`loads.md`](loads.md) is bending in a thin wall, so shell thickness is what
-carries it; the bin wall governs at a safety factor of 6.7 and creep is the
+carries it; the bin wall governs at a safety factor of 4.8 and creep is the
 thing that factor does not cover. Four perimeters is a better spend than more
 infill.
 
@@ -85,5 +86,5 @@ the alignment, so the tape is not being asked to hold anything in place.
    forward to seat.
 7. **Cap** on last.
 
-Steps 3 and 6 are quarter-turns by hand. That is the point of the couplings:
+Steps 3 and 6 are 25° turns by hand. That is the point of the couplings:
 clearing a jam is twisting the outlet off, not undoing the assembly.

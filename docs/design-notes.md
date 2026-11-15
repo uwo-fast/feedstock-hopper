@@ -183,15 +183,14 @@ headroom, but the assembled machine tops out lower and the spec echo now says
 so. Leaving the machine's opening out of the path would report a system limit
 we do not have.
 
-It also explains the 3 mm sieve the feedstock is currently prepared to: that is
-6.1x the bore, comfortably inside, rather than an arbitrary choice.
+It also explains the 3 mm sieve the feedstock is currently prepared to: the bore
+is 6.1x the sieve, comfortably inside, rather than an arbitrary choice.
 
 ## Build volume 250 × 210 × 210 mm
 
 The Original Prusa i3 MK3S envelope [P], and the largest printer available here
 for the foreseeable future. Reported on every render; `require_printable` turns
-it into a hard error, and is off until the presets are re-derived, since no
-preset currently fits at a workable funnel angle.
+it into a hard error. It is on, and every preset passes with it.
 
 ## No BOSL2
 
