@@ -26,12 +26,12 @@ jobs:
 
       - uses: extractions/setup-just@v4
 
-      # Pinned to the library's tag -- the same one docs/design-notes.md records.
+      # scadman.lock pins bayonet-lock-scad; the setup action installs scadman and syncs it
+      # into .scadman/env, which the justfile puts on OPENSCADPATH.
       - name: Install bayonet-lock-scad
-        run: |
-          git clone --quiet https://github.com/CameronBrooks11/bayonet-lock-scad \
-            "$HOME/.local/share/OpenSCAD/libraries/bayonet-lock-scad"
-          git -C "$HOME/.local/share/OpenSCAD/libraries/bayonet-lock-scad" checkout --quiet v0.12.0
+        uses: CameronBrooks11/scadman/setup@v0.1.0-alpha.7
+        with:
+          sync: "true"
 
       # xvfb because some OpenSCAD builds still want a display to export from,
       # even headless.

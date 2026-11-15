@@ -1,0 +1,6 @@
+[project]
+name = "feedstock-hopper"
+
+[dependencies.bayonet-lock-scad]
+git = "https://github.com/CameronBrooks11/bayonet-lock-scad"
+tag = "v0.12.0"

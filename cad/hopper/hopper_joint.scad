@@ -4,8 +4,8 @@
 
 use <bayonet-lock-scad/bayonet_lock.scad>
 
-// Built on bayonet-lock-scad, installed as a global OpenSCAD library and pinned
-// to its v0.12.0 tag. At least 0.9.1 is required, which fixed the z alignment of
+// Built on bayonet-lock-scad, pinned to its v0.12.0 tag in scadman.lock and installed
+// by `just setup`. At least 0.9.1 is required, which fixed the z alignment of
 // the two halves when entry_depth is not half of part_height -- exactly the case
 // used here.
 //

@@ -49,9 +49,11 @@ satisfy, not measurements; open work is in the
 
 Requires [OpenSCAD](https://openscad.org/) (tested on 2021.01),
 [just](https://github.com/casey/just), and
-[`bayonet-lock-scad`](https://github.com/CameronBrooks11/bayonet-lock-scad)
-installed as an OpenSCAD library, pinned to its `v0.12.0` tag (0.9.1 or later is
-required):
+[`bayonet-lock-scad`](https://github.com/CameronBrooks11/bayonet-lock-scad) at its
+`v0.12.0` tag (0.9.1 or later is required), which `scadman.lock` pins. With
+[scadman](https://github.com/CameronBrooks11/scadman) installed, run `just setup`, which
+puts it in `.scadman/env/`, where every recipe looks first. Without scadman, install it as
+an OpenSCAD library at that tag:
 
 ```sh
 git clone https://github.com/CameronBrooks11/bayonet-lock-scad \
