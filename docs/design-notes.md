@@ -53,7 +53,7 @@ finishes thinner than asked; flat faces and the vertical bin come out thicker.
 One inset for the whole profile also keeps every inner surface parallel to its
 outer, so the funnel meets the bin with no internal ledge to catch pellets.
 
-Verified on the rendered mesh rather than by trig: at the funnel corner a
+Verified on the rendered mesh: at the funnel corner a
 1.44 mm sphere sits entirely inside the wall and a 1.56 mm one breaks out,
 bracketing the 3.00 mm target.
 
@@ -137,15 +137,6 @@ there is 0.25 mm³ of interference across the whole joint, unchanged at higher
 facet counts and therefore real rather than faceting — consistent with the
 library's detent sitting just short of the stop, i.e. a light snap-past.
 
-**We are outside the library's exercised range.** Every example it ships uses
-`interface_radius` of 15 or less, and its angular corrections carry a source
-comment saying they were empirically tuned and validated for `pin_radius` up to
-3.0. We run `interface_radius` 29.15 at `pin_radius` 3.0. The geometry is
-verified correct here — it seats, captures and keys — but the detent grows with
-radius (0.25 mm³ of snap-past at 22.15, 1.05 mm³ at 29.15) because it is placed
-by angle, so its arc length scales. Worth re-checking if the coupling grows
-again.
-
 **Anti-rotation is not a screw.** A radial self-tapping M4 into a pocket in the
 neck was tried and removed. Two sockets are not the same case, and treating them
 as a symmetric pair was the mistake: disengaging a bayonet means rotating back
@@ -156,12 +147,8 @@ releases nothing and the screw guarded a failure gravity already prevents. At
 the **lower** socket the outlet simply drops out, and the hub is an open bore,
 so the hopper would drain through it.
 
-The lower screw was also unbuildable as drawn, and structurally so. The assert
-keeping the pilot clear of the channel puts `retainer_z` in (9.15, 16.30), which
-on the inverted socket is world z (1.70, 8.85) — entirely inside an 11.50 mm
-skirt flare. It could only ever exit on a 45° cone, where no head seats. Pulling
-the skirt in to 88 mm would clear it, at the cost of moving the hub fixings
-3.5 mm nearer the clearance hole.
+The lower screw was also unbuildable as drawn: it could only exit on the hub
+skirt's 45° cone, where no head seats.
 
 So the outlet's retention rests on the bayonet, and on the hose thread that
 screws into it. It has held in service; strain-relieving the hose near the outlet is still the
@@ -194,7 +181,7 @@ it into a hard error. It is on, and every preset passes with it.
 
 ## No BOSL2
 
-BOSL2 is installed globally and its `prismoid(xang=)` is close to the feature we
+BOSL2's `prismoid(xang=)` is close to the feature we
 needed, but it does not solve the shell problem — its only true 3D offset uses
 `minkowski()` and its own docs advise against it — so an inner solid still has
 to be subtracted and the `sin θ` compensation still has to be written by hand.

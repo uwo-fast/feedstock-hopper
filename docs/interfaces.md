@@ -82,22 +82,11 @@ cleanly from under the plate through the hub's fixings. The outlet's bore
 widens monotonically from the hose end up to the coupling, so in the flow
 direction it converges with no ledge.
 
-The hose-into-socket fit was settled on a printed coupon rather than in CGAL
-(the coupon has since been removed; it is in the history). It had to be: the
-check that CGAL passed had been run against a thread cutting a tenth of its
-groove, so it was measuring a hose through what was nearly a plain bore.
-
-Three of the four numbers moved once a coupon existed to try. The tube is
-21.5 mm, not 21; the pitch is 8.5 mm, not 7.6; and 0.2 mm of clearance is
-enough on both the bore and the groove, where 0.4 was assumed. The rib is
-3.5 mm as measured, and the thread is right-handed as guessed.
-
-The fourth thing the coupon settled is not a dimension. The groove is a swept
-polyhedron, so it starts and ends on a flat cap, and a cap landing inside the
-part leaves solid material exactly where the groove should be. The socket swept
-from 0.5 mm below its mouth, which blocked 57 degrees of the entry -- the rib
-meeting a wall instead of a groove, which is a hose that will not start. The
-sweep now runs a full lead past the socket at both ends, as the coupon did.
+The hose-into-socket fit was settled on a printed coupon: a 21.5 mm tube with a
+3.5 mm rib at 8.5 mm pitch, right-handed, with 0.2 mm of clearance on both the
+bore and the groove. The groove is a swept polyhedron that ends on flat caps,
+so the sweep runs a full lead past the socket at both ends; a cap inside the
+part would leave solid material where the hose has to start.
 
 ## C — mount
 
@@ -132,12 +121,9 @@ Plates:
 
 ### The MK3S plate clamps rather than hooks
 
-Prusa's own spool holder hangs on this frame, so it is the obvious reference.
-Scanning its mesh for opposed parallel faces four to nine millimetres apart
-finds **none anywhere** — it has no frame slot at all. It is a cantilever hook
-that stays seated because the spool's weight holds it down. Fine for a kilogram
-of filament; not a pattern to carry three kilograms of pellets. So this one
-straddles the frame and pinches it.
+A cantilever hook stays seated only while its load holds it down, which suits a
+spool of filament but not a full hopper. This plate straddles the frame and
+pinches it.
 
 **The hopper axis is offset 47 mm from the frame plane, not over it.** The
 outlet hangs below the plate and has to pass _beside_ the frame rather than
@@ -145,8 +131,7 @@ through it. There are **two** minimums and the second is the one that bites:
 the outlet clearing the frame needs 38.6 mm, but the saddle — jaws and fillet
 included — is wider than the bar it grips and must also sit clear of the
 plate's own clearance hole, which needs 46.8. Both are asserted, and the error
-says which one it was. That offset is also why Prusa's holder is an L-arm: the
-same constraint produced the same shape.
+says which one it was.
 
 The saddle's roof carries the vertical load, sitting on the frame's top edge, so
 the clamp screws only resist sliding and tipping rather than holding the weight

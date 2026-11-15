@@ -21,7 +21,7 @@ placement rather than trusting it.
 
 ### Why those orientations
 
-Measured, not guessed: downward-facing flat area above the bed, per part.
+Downward-facing flat area above the bed, per part:
 
 - **Segment 0** has 8 280 mm² of it — the split flange's underside, which is a
   12 mm horizontal ledge all the way round. Flipped, that lands on the bed and
