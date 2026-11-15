@@ -87,7 +87,7 @@ it; the assert refused the old size; the resize followed.
 
 The joint was hand-rolled with rectangular tabs. It now comes from our own
 `bayonet-lock-scad`, which brings a hard end stop, a keyed pattern, and a
-thicker socket wall outside the channel. It is pinned to the `v0.12.0` tag (it
+thicker socket wall outside the channel. `scadman.lock` pins it to the `v0.12.0` tag (it
 was pinned by commit `85c43ae`, v0.11.0, before the library published tags);
 at least 0.9.1 is required, which fixed the z alignment of the two halves when
 `entry_depth` is not half of `part_height`, exactly the case used here.

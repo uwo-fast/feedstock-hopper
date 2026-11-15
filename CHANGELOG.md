@@ -22,6 +22,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- `bayonet-lock-scad` comes from [scadman](https://github.com/CameronBrooks11/scadman):
+  `scadman.toml` declares it at `v0.12.0`, `scadman.lock` pins the commit, and `just
+  setup` syncs it into `.scadman/env/`, which the justfile puts first on `OPENSCADPATH`.
+  CI installs it with scadman's setup action instead of cloning it into the global
+  library folder. The README keeps the manual install.
 - `bayonet-lock-scad` is pinned to its `v0.12.0` tag instead of commit `85c43ae`
   (v0.11.0), in CI, the README and the design notes. Every `just check` case
   renders byte-identically on both, and `just geom` reports the same figures on

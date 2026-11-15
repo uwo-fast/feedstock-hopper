@@ -1,6 +1,10 @@
 # feedstock-hopper — CAD tasks
 # Requires: openscad (tested on 2021.01)
 
+# The libraries scadman.lock pins, installed by `just setup`. First on OPENSCADPATH, so the
+# pinned copy is used over any installed globally.
+export OPENSCADPATH := justfile_directory() + "/.scadman/env"
+
 hopper := "cad/hopper/pellet_hopper.scad"
 
 # Facet counts are set per purpose. The gate proves the model compiles and its
@@ -31,6 +35,10 @@ plate_variants := "mk3s universal panel"
 
 default:
     @just --list
+
+# Install bayonet-lock-scad at the commit scadman.lock pins, into .scadman/env. Needs scadman.
+setup:
+    scadman sync
 
 # Compile every part at every size, failing on any diagnostic. CI gate.
 check:

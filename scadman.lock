@@ -1,0 +1,7 @@
+version = 1
+
+[[package]]
+name = "bayonet-lock-scad"
+source = "https://github.com/CameronBrooks11/bayonet-lock-scad"
+rev = "d5bd0077183b0c884f616ea544827a25c7c6aec4"
+hash = "b53dfb90167596d70e0d391d3c67aba37e3372e0d20e3b74914f9f72fae80139"
