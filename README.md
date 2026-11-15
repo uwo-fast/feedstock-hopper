@@ -40,8 +40,8 @@ satisfy, not measurements; open work is in the
 - `cad/hopper/` — the hopper: body, cap, hub, outlet, the feedstock, hose and
   target registries, and the plate in its universal, MK3S-frame and panel
   variants
-- `docs/` — interfaces, design notes, feedstock, loads, printing, and the review
-  of the imported design
+- `docs/` — interfaces, design notes, feedstock, loads and printing
+- `dev/` — the design log and the review of the imported design
 - `examples/` — one file per configuration, each rendering standalone
 - `scripts/`, `tests/` — geometry regression harness and its baseline
 
@@ -108,7 +108,8 @@ change.
 - [Feedstock](docs/feedstock.md) — measured bulk density and provenance
 - [Printing and assembly](docs/printing.md) — parts, orientations, hardware, order
 - [Load cases](docs/loads.md) — hand calculations and what they do not cover
-- [Review of the imported hopper design](docs/hopper-design-review.md)
+- [Design log](https://github.com/uwo-fast/feedstock-hopper/blob/main/dev/design-log.md) and
+  [review of the imported design](https://github.com/uwo-fast/feedstock-hopper/blob/main/dev/hopper-design-review.md)
 
 ## Contributing
 

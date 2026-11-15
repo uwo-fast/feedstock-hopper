@@ -17,7 +17,7 @@ Status, as of the current tree:
 | Bayonet duplicates a library             | **fixed** — built on `bayonet-lock-scad`                                                                     |
 | Four identical locked positions          | **fixed** — keyed                                                                                            |
 | Wall thinner than specified              | **fixed** — `min_wall` is perpendicular, compensated on the corner                                           |
-| Structure unverified                     | **fixed** — [`loads.md`](loads.md)                                                                           |
+| Structure unverified                     | **fixed** — [`loads.md`](../docs/loads.md)                                                                           |
 | No operational features                  | **open** — no shutoff, sight window, level sensing or cap seal                                               |
 | Code structure                           | **fixed** — parameterised modules, one concern per file                                                      |
 

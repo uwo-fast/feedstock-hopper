@@ -64,7 +64,7 @@ module loft(z0, z1, slab0 = 1, slab1 = 1) {
 }
 
 // Standalone preview. $fn is passed on the call, never assigned at top level --
-// see docs/design-notes.md. `use <>` does not run this; `include <>` would.
+// see dev/design-log.md. `use <>` does not run this; `include <>` would.
 rounded_box(40, 25, 6, 4, $fn=$preview ? 48 : 120);
 translate([60, 0, 0]) loft(0, 30, $fn=$preview ? 48 : 120) {
     circle(d=12);

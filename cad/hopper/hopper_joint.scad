@@ -36,7 +36,7 @@ use <bayonet-lock-scad/bayonet_lock.scad>
 //    inequality on the channel depth) and also cover the shell thickness against
 //    the interface radius, and the pellet bore against the pins.
 //
-// See docs/design-notes.md.
+// See dev/design-log.md.
 
 _JOINT_INTERFACE_RADIUS = 0;
 _JOINT_SHELL_THICKNESS = 1;
