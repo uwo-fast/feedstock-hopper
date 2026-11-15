@@ -99,8 +99,8 @@ plate satisfies it with three things:
 | hub fixings            | 4 x M4 on a **dia 79** circle | outboard of the hub's 72 mm tube, inboard of its 95 mm skirt; through-bolted, nut in a dia 8 counterbore |
 | machine pattern        | machine-specific           | the only part that touches reality                                                                    |
 
-Bearing is a non-issue -- the hub seats on a 722 mm2 annulus, which is 0.06 MPa
-at the loaded 4.24 kg against roughly 50 MPa for PETG. Plate _bending_ around a
+Bearing is a non-issue -- the hub seats on a 722 mm2 annulus, which is 0.05 MPa
+for 4 kg (see [loads](loads.md)) against roughly 50 MPa for PETG. Plate _bending_ around a
 65 mm hole is the thing to size for, and plate thickness is a parameter for that
 reason.
 
