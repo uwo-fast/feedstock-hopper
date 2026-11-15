@@ -37,13 +37,13 @@ satisfy, not measurements; open work is in the
 
 ## Repository layout
 
-- `cad/hopper/` — the hopper: body, cap, hub, outlet, the feedstock, hose and
+- `cad/hopper/` -- the hopper: body, cap, hub, outlet, the feedstock, hose and
   target registries, and the plate in its universal, MK3S-frame and panel
   variants
-- `docs/` — interfaces, design notes, feedstock, loads and printing
-- `dev/` — the design log and the review of the imported design
-- `examples/` — one file per configuration, each rendering standalone
-- `scripts/`, `tests/` — geometry regression harness and its baseline
+- `docs/` -- interfaces, design notes, feedstock, loads and printing
+- `dev/` -- the design log and the review of the imported design
+- `examples/` -- one file per configuration, each rendering standalone
+- `scripts/`, `tests/` -- geometry regression harness and its baseline
 
 ## Getting started
 
@@ -82,8 +82,8 @@ shallowest angle it will still flow at, and a render below it is an error rather
 than a quiet under-performing hopper.
 
 Note that the presets are named for their footprint rather than a capacity. The
-imported design worked the other way round — capacity first, wall angle whatever
-was left — which is how it ended up at 27 to 36 degrees at the corner.
+imported design worked the other way round -- capacity first, wall angle
+whatever was left -- which is how it ended up at 27 to 36 degrees at the corner.
 
 Each of the other files under `cad/hopper/` defines one part or one concern and
 renders on its own, so you can open `hopper_hub.scad` directly and iterate on
@@ -103,11 +103,11 @@ change.
 
 ## Documentation
 
-- [Interfaces](docs/interfaces.md) — the three couplings, and what a new machine needs
-- [Design notes](docs/design-notes.md) — why the geometry is the way it is, where the numbers came from, and known limits
-- [Feedstock](docs/feedstock.md) — measured bulk density and provenance
-- [Printing and assembly](docs/printing.md) — parts, orientations, hardware, order
-- [Load cases](docs/loads.md) — hand calculations and what they do not cover
+- [Interfaces](docs/interfaces.md) -- the three couplings, and what a new machine needs
+- [Design notes](docs/design-notes.md) -- why the geometry is the way it is, where the numbers came from, and known limits
+- [Feedstock](docs/feedstock.md) -- measured bulk density and provenance
+- [Printing and assembly](docs/printing.md) -- parts, orientations, hardware, order
+- [Load cases](docs/loads.md) -- hand calculations and what they do not cover
 - [Design log](https://github.com/uwo-fast/feedstock-hopper/blob/main/dev/design-log.md) and
   [review of the imported design](https://github.com/uwo-fast/feedstock-hopper/blob/main/dev/hopper-design-review.md)
 
