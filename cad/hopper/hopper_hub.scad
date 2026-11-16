@@ -1,5 +1,5 @@
 // Hub: the double-ended coupling the body and the outlet both twist into.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm
 
 use <hopper_joint.scad>

@@ -1,5 +1,5 @@
 // Bayonet joint between the hopper body and the roof mount.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm, degrees
 
 use <bayonet-lock-scad/bayonet_lock.scad>

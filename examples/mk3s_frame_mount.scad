@@ -1,6 +1,6 @@
 // Example: the MK3S frame mount, shown clamped to a stub of the printer's
 // frame, with the hub and outlet in place around it.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 
 use <../cad/hopper/hopper_specs.scad>;
 use <../cad/hopper/hopper_hub.scad>;

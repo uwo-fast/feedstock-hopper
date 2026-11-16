@@ -1,6 +1,6 @@
 // Hopper body: storage bin, funnel, the bayonet neck beneath it, and the flanged
 // joint that cuts it into printable segments.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm
 
 use <hopper_funnel.scad>

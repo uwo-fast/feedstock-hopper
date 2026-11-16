@@ -22,6 +22,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Licensing follows the FAST policy's hardware track: the parametric CAD is
+  licensed under both `GPL-3.0-or-later` and `CERN-OHL-S-2.0`, generated geometry
+  under `CERN-OHL-S-2.0`, scripts and tooling under `GPL-3.0-or-later`, and the
+  geometry baseline under `CC-BY-4.0`. See `LICENSING.md`.
 - `bayonet-lock-scad` comes from [scadman](https://github.com/CameronBrooks11/scadman):
   `scadman.toml` declares it at `v0.12.0`, `scadman.lock` pins the commit, and `just
   setup` syncs it into `.scadman/env/`, which the justfile puts first on `OPENSCADPATH`.

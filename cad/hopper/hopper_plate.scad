@@ -1,6 +1,6 @@
 // Mounting plates: the universal interface, and the machine-specific variants
 // that difference their own pattern out of it.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm, degrees
 
 use <hopper_hub.scad>

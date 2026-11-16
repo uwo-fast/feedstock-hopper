@@ -1,5 +1,5 @@
 // Preview colours, one per printed part.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 
 // A printed part is exactly one colour. Never colour features within a part
 // differently: none of these are multi-material prints, and shading a flange or
