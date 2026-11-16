@@ -4,7 +4,7 @@
 > quick-release couplings and a small adapter per machine.
 
 [![check](https://github.com/uwo-fast/feedstock-hopper/actions/workflows/check.yml/badge.svg)](https://github.com/uwo-fast/feedstock-hopper/actions/workflows/check.yml)
-[![License: GPL-3.0](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/uwo-fast/feedstock-hopper/blob/main/LICENSE)
+[![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPL--3.0--or--later-blue.svg)](https://github.com/uwo-fast/feedstock-hopper/blob/main/LICENSE)
 [![Contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](https://github.com/uwo-fast/.github/blob/main/CONTRIBUTING.md)
 
 ## Overview
@@ -130,7 +130,7 @@ whose body, roof mount, cap and bayonet coupling are the basis of `cad/hopper/`.
 
 ## License
 
-Released under the [GPL-3.0](https://github.com/uwo-fast/feedstock-hopper/blob/main/LICENSE) license.
+Released under the [GPL-3.0-or-later](https://github.com/uwo-fast/feedstock-hopper/blob/main/LICENSE) license.
 
 This project is not affiliated with GreenBoy3D or Prusa Research.
 
