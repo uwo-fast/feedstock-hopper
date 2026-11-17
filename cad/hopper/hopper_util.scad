@@ -1,5 +1,5 @@
 // Shared geometry helpers.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm
 
 // These names are deliberately unprefixed because this project carries no

@@ -1,5 +1,5 @@
 // Outlet: twists into the hub's underside and takes the conveyor hose.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm
 
 use <hopper_funnel.scad>

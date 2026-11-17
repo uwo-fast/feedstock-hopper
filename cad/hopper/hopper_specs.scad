@@ -1,7 +1,7 @@
 // Specifications the geometry is sized FROM rather than sized BY: what the
 // feedstock does, the flow rules it obeys, and the parts bought rather than
 // drawn.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm, degrees, kg/L
 
 // Accessors exist because variables do not cross a `use <>` boundary but

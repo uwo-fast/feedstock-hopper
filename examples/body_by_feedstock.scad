@@ -1,7 +1,7 @@
 // Example: what the feedstock costs. The same footprint at the shallowest angle
 // each material will flow at, split into the segments that height needs, and
 // laid out the way the parts go on the bed.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 
 use <../cad/hopper/hopper_body.scad>;
 use <../cad/hopper/hopper_funnel.scad>;

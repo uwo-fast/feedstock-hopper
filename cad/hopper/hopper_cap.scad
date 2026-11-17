@@ -1,5 +1,5 @@
 // Lid that slips over the top of the hopper body.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm
 
 use <hopper_util.scad>

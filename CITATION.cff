@@ -12,4 +12,7 @@ authors:
     given-names: "Hadden"
 version: "0.1.0"
 url: "https://github.com/uwo-fast/feedstock-hopper"
+# Only the software licence goes here. A licence list in CFF means "either licence,
+# at your option", which is not what a repository licensed separately by component
+# grants; LICENSING.md states the hardware licence.
 license: GPL-3.0-or-later

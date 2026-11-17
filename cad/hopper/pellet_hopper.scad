@@ -1,5 +1,5 @@
 // Bulk pellet hopper for the GreenBoy3D pellet extruder: driver and parameters.
-// GPL-3.0-or-later
+// GPL-3.0-or-later and CERN-OHL-S-2.0; see LICENSING.md
 // Units: mm, degrees
 //
 // This file exists to expose parameters to the OpenSCAD Customizer and to hand
